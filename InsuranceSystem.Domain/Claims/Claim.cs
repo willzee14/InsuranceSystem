@@ -1,6 +1,5 @@
 ﻿using InsuranceSystem.Application.Enum;
 using InsuranceSystem.Domain.Common;
-using InsuranceSystem.Domain.Entities;
 using InsuranceSystem.Domain.Expenses;
 using System;
 using System.Collections.Generic;
@@ -25,6 +24,6 @@ namespace InsuranceSystem.Domain.Claims
         public decimal Amount { get; set; }
 
         public DateTime DateOfExpense { get; set; }
-        public ClaimStatus Status { get; set; }
+        public ClaimStatus ClaimStatus { get; set; }
     }
 }

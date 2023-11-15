@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace InsuranceSystem.Application.Dtos
 {
-    public class ExpenseDto
+    public class ServiceResponse
     {
-        public string ExpenseType { get; set; } 
-        public string ExpenseDescription { get; set; }
+        public string ResponseCode { get; set; }
+        public string ResponseMessage { get; set; }
+        public object ResponseData { get; set; }
     }
 }

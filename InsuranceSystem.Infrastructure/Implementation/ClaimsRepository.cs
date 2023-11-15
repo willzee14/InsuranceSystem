@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using InsuranceSystem.Application.Dtos;
 using InsuranceSystem.Infrastructure.Abstraction;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -48,6 +49,105 @@ namespace InsuranceSystem.Infrastructure.Implementation
             {
                 Log.Error($"Error at insert audit: {ex}");
                 return -1;
+            }
+        }
+        public async Task<List<ClaimsDto>> GetAllClaims()
+        {
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(conncetionString);
+
+                var query = @"Select * From [dbo].[Claims]";
+                               
+
+                var result = await sqlConnection.QueryAsync<ClaimsDto>(query,commandType: CommandType.Text);
+
+                return result.ToList();
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Error at GetAllClaims: {ex}");
+                return null;
+            }
+        }
+
+        public async Task<int> InsetClaim(ClaimsDto claimsDto)
+        {
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(conncetionString);
+
+                var query = @"Insert Into [dbo].[Claims] (ClaimsId,NationalIDOfPolicyHolder,ExpenseId,Amount,DateOfExpense,ClaimStatus,DateCreated)
+                                     Values(@ClaimsId,@NationalIDOfPolicyHolder,@ExpenseId,@Amount,@DateOfExpense,@ClaimStatus,@DateCreated)";
+
+
+                var parameters = new DynamicParameters();
+                parameters.Add("ClaimsId", claimsDto.ClaimsId);
+                parameters.Add("NationalIDOfPolicyHolder", claimsDto.NationalIDOfPolicyHolder);
+                parameters.Add("ExpenseId", claimsDto.ExpenseId);
+                parameters.Add("Amount", claimsDto.Amount);
+                parameters.Add("DateOfExpense", claimsDto.DateOfExpense);
+                parameters.Add("ClaimStatus", claimsDto.ClaimStatus);
+                parameters.Add("DateCreated", DateTime.UtcNow);
+
+                var result = await sqlConnection.ExecuteAsync(query, parameters, commandType: CommandType.Text);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Error at InsetClaim: {ex}");
+                return -1;
+            }
+        }
+
+        public async Task<int> UpdateClaim(ClaimsDto claimsDto)
+        {
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(conncetionString);
+
+                var query = @"Update [dbo].[Claims] Set ClaimsId = @ClaimsId,NationalIDOfPolicyHolder = @NationalIDOfPolicyHolder,ExpenseId = @ExpenseId,Amount =@Amount,DateOfExpense =@DateOfExpense,ClaimStatus =@ClaimStatus,DateModified =@DateModified)";
+                                    
+
+                var parameters = new DynamicParameters();
+                parameters.Add("ClaimsId", claimsDto.ClaimsId);
+                parameters.Add("NationalIDOfPolicyHolder", claimsDto.NationalIDOfPolicyHolder);
+                parameters.Add("ExpenseId", claimsDto.ExpenseId);
+                parameters.Add("Amount", claimsDto.Amount);
+                parameters.Add("DateOfExpense", claimsDto.DateOfExpense);
+                parameters.Add("ClaimStatus", claimsDto.ClaimStatus);
+                parameters.Add("DateCreated", DateTime.UtcNow);
+
+                var result = await sqlConnection.ExecuteAsync(query, parameters, commandType: CommandType.Text);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Error at UpdateClaim: {ex}");
+                return -1;
+            }
+        }
+
+        public async Task<ClaimsDto> GetClaimsByNationalID(ClaimsDto claimsDto)
+        {
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(conncetionString);
+
+                var query = @"Select * From [dbo].[Claims] Where NationalIDOfPolicyHolder = @NationalIDOfPolicyHolder";
+
+                var parameters = new DynamicParameters();
+                parameters.Add("NationalIDOfPolicyHolder", claimsDto.NationalIDOfPolicyHolder);
+                var result = await sqlConnection.QueryFirstOrDefaultAsync<ClaimsDto>(query, parameters,commandType: CommandType.Text);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Error at GetClaimsByNationalID: {ex}");
+                return null;
             }
         }
     }
