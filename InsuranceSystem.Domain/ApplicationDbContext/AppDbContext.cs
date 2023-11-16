@@ -1,5 +1,4 @@
 ﻿using InsuranceSystem.Domain.Claims;
-using InsuranceSystem.Domain.Entities;
 using InsuranceSystem.Domain.Expenses;
 using InsuranceSystem.Domain.Policy;
 using Microsoft.EntityFrameworkCore;

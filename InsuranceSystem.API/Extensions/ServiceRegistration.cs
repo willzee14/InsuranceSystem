@@ -20,6 +20,8 @@ namespace InsuranceSystem.API.Extensions
             // service registrations
             services.AddScoped<ICalimsService, ClaimsService>();
             services.AddScoped<IClaimsRepository, ClaimsRepository>();
+            services.AddScoped<IPolicyHolderRepository, PolicyHolderRepository>();
+            services.AddScoped<IPolicyService, PolicyService>();
             services.AddScoped<EncryptionActionFilter>();
             services.AddHttpContextAccessor();
             services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();

@@ -66,7 +66,7 @@ namespace InsuranceSystem.API.Extensions
                     var encryptdata = EncryptString(Key, reslt);
                     view.Value = encryptdata;
 
-                    var audit = new AuditTrail
+                    var audit = new InsuranceSystem.Infrastructure.Dtos.AuditTrail
                     {
                         Action = context.HttpContext.Request.Path,
                         ClientName = Environment.MachineName,

@@ -9,9 +9,9 @@ namespace InsuranceSystem.Application.Abstraction
 {
     public interface ICalimsService
     {
-        Task<int> UpdateClaim(ClaimsDto claimsDto);
-        Task<int> InsetClaim(ClaimsDto claimsDto);
-        Task<List<ClaimsDto>> GetAllClaims();
-        Task<ClaimsDto> GetClaimsByNationalID(ClaimsDto claimsDto);
+        Task<ServiceResponse> UpdateClaim(string claimsDto);
+        Task<ServiceResponse> InsetClaim(string claimsDto);
+        Task<ServiceResponse> GetAllClaims();
+        Task<ServiceResponse> GetClaimsByNationalID(string claimsDto);
     }
 }

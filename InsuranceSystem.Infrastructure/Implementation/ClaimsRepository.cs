@@ -1,6 +1,8 @@
 ﻿using Dapper;
-using InsuranceSystem.Application.Dtos;
 using InsuranceSystem.Infrastructure.Abstraction;
+using InsuranceSystem.Infrastructure.Dto;
+using InsuranceSystem.Infrastructure.Dtos;
+using InsuranceSystem.Infrastructure.Enum;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Serilog;
@@ -82,12 +84,12 @@ namespace InsuranceSystem.Infrastructure.Implementation
 
 
                 var parameters = new DynamicParameters();
-                parameters.Add("ClaimsId", claimsDto.ClaimsId);
+                parameters.Add("ClaimsId", DateTime.Now.Ticks.ToString());
                 parameters.Add("NationalIDOfPolicyHolder", claimsDto.NationalIDOfPolicyHolder);
                 parameters.Add("ExpenseId", claimsDto.ExpenseId);
                 parameters.Add("Amount", claimsDto.Amount);
                 parameters.Add("DateOfExpense", claimsDto.DateOfExpense);
-                parameters.Add("ClaimStatus", claimsDto.ClaimStatus);
+                parameters.Add("ClaimStatus", ClaimStatus.Submitted);
                 parameters.Add("DateCreated", DateTime.UtcNow);
 
                 var result = await sqlConnection.ExecuteAsync(query, parameters, commandType: CommandType.Text);
@@ -107,16 +109,17 @@ namespace InsuranceSystem.Infrastructure.Implementation
             {
                 SqlConnection sqlConnection = new SqlConnection(conncetionString);
 
-                var query = @"Update [dbo].[Claims] Set ClaimsId = @ClaimsId,NationalIDOfPolicyHolder = @NationalIDOfPolicyHolder,ExpenseId = @ExpenseId,Amount =@Amount,DateOfExpense =@DateOfExpense,ClaimStatus =@ClaimStatus,DateModified =@DateModified)";
+                var query = @"Update [dbo].[Claims] Set ClaimsId = @ClaimsId,NationalIDOfPolicyHolder = @NationalIDOfPolicyHolder,ExpenseId = @ExpenseId,Amount =@Amount,DateOfExpense =@DateOfExpense,ClaimStatus =@ClaimStatus,DateModified =@DateModified Where ClaimsId = @ClaimsId";
                                     
 
                 var parameters = new DynamicParameters();
+                
                 parameters.Add("ClaimsId", claimsDto.ClaimsId);
                 parameters.Add("NationalIDOfPolicyHolder", claimsDto.NationalIDOfPolicyHolder);
                 parameters.Add("ExpenseId", claimsDto.ExpenseId);
                 parameters.Add("Amount", claimsDto.Amount);
                 parameters.Add("DateOfExpense", claimsDto.DateOfExpense);
-                parameters.Add("ClaimStatus", claimsDto.ClaimStatus);
+                parameters.Add("ClaimStatus", ClaimStatus.InReview);
                 parameters.Add("DateCreated", DateTime.UtcNow);
 
                 var result = await sqlConnection.ExecuteAsync(query, parameters, commandType: CommandType.Text);

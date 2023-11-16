@@ -1,4 +1,6 @@
-﻿using InsuranceSystem.Application.Dtos;
+﻿
+using InsuranceSystem.Infrastructure.Dto;
+using InsuranceSystem.Infrastructure.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

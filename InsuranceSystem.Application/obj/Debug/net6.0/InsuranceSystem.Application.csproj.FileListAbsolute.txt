@@ -1,0 +1,15 @@
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Application.deps.json
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Application.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Application.pdb
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Infrastructure.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Infrastructure.pdb
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.csproj.AssemblyReference.cache
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.AssemblyInfoInputs.cache
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.AssemblyInfo.cs
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.csproj.CoreCompileInputs.cache
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.csproj.CopyComplete
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\refint\InsuranceSystem.Application.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.pdb
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\ref\InsuranceSystem.Application.dll

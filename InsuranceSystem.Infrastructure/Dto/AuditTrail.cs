@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InsuranceSystem.Application.Dtos
+namespace InsuranceSystem.Infrastructure.Dtos
 {
     public class AuditTrail
     {

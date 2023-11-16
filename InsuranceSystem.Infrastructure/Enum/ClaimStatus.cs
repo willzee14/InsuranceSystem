@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace InsuranceSystem.Infrastructure.Enum
 {
-    internal class ClaimStatus
+    public enum ClaimStatus
     {
+        Submitted,
+        Approved,
+        Declined,
+        InReview
     }
 }
