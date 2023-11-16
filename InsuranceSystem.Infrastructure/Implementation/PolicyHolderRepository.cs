@@ -30,7 +30,7 @@ namespace InsuranceSystem.Infrastructure.Implementation
             {
                 SqlConnection sqlConnection = new SqlConnection(conncetionString);
 
-                var query = @"Select * From [dbo].[Policies] Where NationalIDNumber = @NationalIDNumber";
+                var query = @"Select * From [dbo].[Policyholders] Where NationalIDNumber = @NationalIDNumber";
 
                 var parameters = new DynamicParameters();
                 parameters.Add("NationalIDNumber", policyHolderDto.NationalIDNumber);
@@ -51,7 +51,7 @@ namespace InsuranceSystem.Infrastructure.Implementation
             {
                 SqlConnection sqlConnection = new SqlConnection(conncetionString);
 
-                var query = @"Select * From [dbo].[Policies]";
+                var query = @"Select * From [dbo].[Policyholders]";
 
 
                 var result = await sqlConnection.QueryAsync<PolicyHolderDto>(query, commandType: CommandType.Text);
@@ -71,8 +71,8 @@ namespace InsuranceSystem.Infrastructure.Implementation
             {
                 SqlConnection sqlConnection = new SqlConnection(conncetionString);
 
-                var query = @"Insert Into [dbo].[Policies] (NationalIDNumber,Name,Surname,DateOfBirth,PolicyNumber,DateCreated)
-                                     Values(@NationalIDNumber,@Name,@Surname,@DateOfBirth,@PolicyNumber,@DateCreated)";
+                var query = @"Insert Into [dbo].[Policyholders] (NationalIDNumber,Name,Surname,DateOfBirth,PolicyNumber,DateCreated,DateModified)
+                                     Values(@NationalIDNumber,@Name,@Surname,@DateOfBirth,@PolicyNumber,@DateCreated,@DateModified)";
 
                 var parameters = new DynamicParameters();
                 parameters.Add("NationalIDNumber", policyHolderDto.NationalIDNumber);
@@ -80,7 +80,8 @@ namespace InsuranceSystem.Infrastructure.Implementation
                 parameters.Add("Surname", policyHolderDto.Surname);
                 parameters.Add("DateOfBirth", policyHolderDto.DateOfBirth);
                 parameters.Add("PolicyNumber", policyHolderDto.PolicyNumber);                
-                parameters.Add("DateCreated", DateTime.UtcNow);
+                parameters.Add("DateCreated", DateTime.UtcNow); 
+                parameters.Add("DateModified", DateTime.UtcNow);
 
                 var result = await sqlConnection.ExecuteAsync(query, parameters, commandType: CommandType.Text);
 
@@ -99,7 +100,7 @@ namespace InsuranceSystem.Infrastructure.Implementation
             {
                 SqlConnection sqlConnection = new SqlConnection(conncetionString);
 
-                var query = @"Update [dbo].[Policies] Set NationalIDNumber =@NationalIDNumber,Name =@Name,Surname =@Surname,DateOfBirth =@DateOfBirth,PolicyNumber =@PolicyNumber,DateModified =@DateModified";
+                var query = @"Update [dbo].[Policyholders] Set NationalIDNumber =@NationalIDNumber,Name =@Name,Surname =@Surname,DateOfBirth =@DateOfBirth,PolicyNumber =@PolicyNumber,DateModified =@DateModified";
                                      
 
                 var parameters = new DynamicParameters();
