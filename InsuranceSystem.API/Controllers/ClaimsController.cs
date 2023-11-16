@@ -29,12 +29,8 @@ namespace InsuranceSystem.API.Controllers
         {
             var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
             var result = await _calimsService.InsetClaim(reslt);
-
-            if (result.ResponseCode.Equals(_serviceResponseSettings.SuccessCode))
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            
+                return Ok(result);            
         }
 
         [HttpPut("UpdateClaim")]
@@ -43,12 +39,8 @@ namespace InsuranceSystem.API.Controllers
         {
             var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
             var result = await _calimsService.UpdateClaim(reslt);
-
-            if (result.ResponseCode.Equals(_serviceResponseSettings.SuccessCode))
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+           
+                return Ok(result);            
         }
 
         [HttpPost("ClaimsByNationalID")]
@@ -57,25 +49,18 @@ namespace InsuranceSystem.API.Controllers
         {
             var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
             var result = await _calimsService.GetClaimsByNationalID(reslt);
-
-            if (result.ResponseCode.Equals(_serviceResponseSettings.SuccessCode))
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            
+                return Ok(result);            
         }
 
         [HttpGet("Claims")]
         [ServiceFilter(typeof(EncryptionActionFilter))]
-        public async Task<IActionResult> Claims([FromBody] EncryptClass data)
+        public async Task<IActionResult> Claims()
         {           
             var result = await _calimsService.GetAllClaims();
-
-            if (result.ResponseCode.Equals(_serviceResponseSettings.SuccessCode))
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+           
+                return Ok(result);           
+            
         }
     }
 }

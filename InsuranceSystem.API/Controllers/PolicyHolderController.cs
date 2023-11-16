@@ -30,12 +30,8 @@ namespace InsuranceSystem.API.Controllers
         {
             var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
             var result = await _policyService.InsetPolicy(reslt);
-
-            if (result.ResponseCode.Equals(_serviceResponseSettings.SuccessCode))
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+                     
+                return Ok(result);            
         }
 
         [HttpPut("UpdatePolicy")]
@@ -44,12 +40,8 @@ namespace InsuranceSystem.API.Controllers
         {
             var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
             var result = await _policyService.UpdatePolicy(reslt);
-
-            if (result.ResponseCode.Equals(_serviceResponseSettings.SuccessCode))
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            
+                return Ok(result);            
         }
 
         [HttpPost("GetByPolicyNumber")]
@@ -58,25 +50,17 @@ namespace InsuranceSystem.API.Controllers
         {
             var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
             var result = await _policyService.GetByPolicyNumber(reslt);
-
-            if (result.ResponseCode.Equals(_serviceResponseSettings.SuccessCode))
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            
+                return Ok(result);            
         }
 
         [HttpGet("GetPolicies")]
         [ServiceFilter(typeof(EncryptionActionFilter))]
-        public async Task<IActionResult> GetPolicies([FromBody] EncryptClass data)
+        public async Task<IActionResult> GetPolicies()
         {
             var result = await _policyService.GetPolicies();
-
-            if (result.ResponseCode.Equals(_serviceResponseSettings.SuccessCode))
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            
+                return Ok(result);           
         }
     }
 }

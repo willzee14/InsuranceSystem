@@ -11,25 +11,33 @@ namespace InsuranceSystem.Application.Utility
 {
     public static class RequestHandler
     {
-        public static ServiceResponse SplitRequest(string req)
+        public static RequestHandlerDto<T> SplitRequest<T>(string req)
         {
-            ServiceResponse res = new ServiceResponse();
+            RequestHandlerDto<T> res = new RequestHandlerDto<T>();
             var splitRes = req?.Split('=');
             if (splitRes != null && splitRes[0].Equals("Unauthorized"))
             {
                 res.ResponseCode = "03";
                 res.ResponseMessage = "Unauthorized";
-                return res;
+                //return res;
             }
-
-            var deserializeReq = JsonConvert.DeserializeObject<dynamic>(splitRes[^1]);
-            if (deserializeReq == null)
+            var valueee = splitRes[^1];
+            try
             {
-                var response = new ServiceResponse() { ResponseCode = "30", ResponseMessage = "invalid request" };
-                return response;
+                var deserializeReq = JsonConvert.DeserializeObject<T>(valueee);
+                if (deserializeReq == null)
+                {
+                    var response = new RequestHandlerDto<T>() { ResponseCode = "30", ResponseMessage = "invalid request" };
+                    //return response;
+                }
+                return new RequestHandlerDto<T>() { ResponseCode = "00", ResponseData = deserializeReq }; 
             }
+            catch (Exception ex)
+            {
 
-            return new ServiceResponse() { ResponseCode = "00", ResponseData = deserializeReq };
+                throw;
+            }
+           
         }
     }
 }

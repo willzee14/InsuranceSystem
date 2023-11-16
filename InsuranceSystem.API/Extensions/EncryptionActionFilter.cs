@@ -105,11 +105,11 @@ namespace InsuranceSystem.API.Extensions
                 string Key = string.Empty;
                 var usernameValue = context.HttpContext.Request.Headers["Authorization"].FirstOrDefault();
 
-                var authTokenCombo = _settings.Username + ":&" + _settings.Password;
+                var authTokenCombo = _settings.Username + ":" + _settings.Password;
 
                 string encoded = System.Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1")
                                  .GetBytes(authTokenCombo));
-                var Authorization = "Basic" + encoded;
+                var Authorization = "Basic " + encoded;
                 if (!string.IsNullOrWhiteSpace(usernameValue))
                 {
                     if (Authorization.Equals(usernameValue))

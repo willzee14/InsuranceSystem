@@ -79,8 +79,8 @@ namespace InsuranceSystem.Infrastructure.Implementation
             {
                 SqlConnection sqlConnection = new SqlConnection(conncetionString);
 
-                var query = @"Insert Into [dbo].[Claims] (ClaimsId,NationalIDOfPolicyHolder,ExpenseId,Amount,DateOfExpense,ClaimStatus,DateCreated)
-                                     Values(@ClaimsId,@NationalIDOfPolicyHolder,@ExpenseId,@Amount,@DateOfExpense,@ClaimStatus,@DateCreated)";
+                var query = @"Insert Into [dbo].[Claims] (ClaimsId,NationalIDOfPolicyHolder,ExpenseId,Amount,DateOfExpense,ClaimStatus,DateCreated,DateModified)
+                                     Values(@ClaimsId,@NationalIDOfPolicyHolder,@ExpenseId,@Amount,@DateOfExpense,@ClaimStatus,@DateCreated,@DateModified)";
 
 
                 var parameters = new DynamicParameters();
@@ -91,6 +91,7 @@ namespace InsuranceSystem.Infrastructure.Implementation
                 parameters.Add("DateOfExpense", claimsDto.DateOfExpense);
                 parameters.Add("ClaimStatus", ClaimStatus.Submitted);
                 parameters.Add("DateCreated", DateTime.UtcNow);
+                parameters.Add("DateModified", DateTime.UtcNow);
 
                 var result = await sqlConnection.ExecuteAsync(query, parameters, commandType: CommandType.Text);
 

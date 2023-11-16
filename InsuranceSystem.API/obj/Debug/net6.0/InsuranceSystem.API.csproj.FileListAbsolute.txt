@@ -96,3 +96,10 @@ C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\Insuran
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\InsuranceSystem.API.genruntimeconfig.cache
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\ref\InsuranceSystem.API.dll
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\InsuranceSystem.API.MvcApplicationPartsAssemblyInfo.cs
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\bin\Debug\net6.0\Humanizer.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\bin\Debug\net6.0\System.CodeDom.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\bin\Debug\net6.0\System.Text.Json.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

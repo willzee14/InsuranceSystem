@@ -36,21 +36,26 @@ namespace InsuranceSystem.Application.Implementation
             }
             else
             {
-                return new ServiceResponse() { ResponseCode = _serviceResponseSettings.SuccessCode, ResponseMessage = _serviceResponseSettings.SuccessMessage };
+                return new ServiceResponse() { ResponseCode = _serviceResponseSettings.SuccessCode, ResponseData = result, ResponseMessage = _serviceResponseSettings.SuccessMessage };
             }
         }
 
         public async Task<ServiceResponse> GetClaimsByNationalID(string claimsDto)
         {
-            var reqObj = RequestHandler.SplitRequest(claimsDto);
-            if (reqObj.ResponseCode != "00")
+            var reqObj = RequestHandler.SplitRequest<ClaimsDto>(claimsDto);
+            //if (reqObj.ResponseCode != "00")
+            //{
+            //    return reqObj;
+            //}
+            //var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.ClaimsDto;
+
+            var claims = new InsuranceSystem.Infrastructure.Dto.ClaimsDto
             {
-                return reqObj;
-            }
-            var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.ClaimsDto;
-            
+               
+                NationalIDOfPolicyHolder = reqObj.ResponseData.NationalIDOfPolicyHolder                
+            };
             Log.Information("About to retrieve all ClaimsByNationalID");
-            var result = await _claimsRepository.GetClaimsByNationalID(jsonReq);
+            var result = await _claimsRepository.GetClaimsByNationalID(claims);
             Log.Information($"response from getall claims: {JsonConvert.SerializeObject(result)}");
             if (result == null)
             {
@@ -74,13 +79,22 @@ namespace InsuranceSystem.Application.Implementation
             //    ExpenseId = claimsDto.ExpenseId,
             //};
 
-            var reqObj = RequestHandler.SplitRequest(claimsDto);
-            if (reqObj.ResponseCode != "00")
+            var reqObj = RequestHandler.SplitRequest<ClaimsDto>(claimsDto);
+            //if (reqObj.ResponseCode != "00")
+            //{
+            //    return reqObj;
+            //}
+            //var jsonReq = reqObj.ResponseData as InsuranceSystem.Application.Dtos.ClaimsDto;
+
+            var claims = new InsuranceSystem.Infrastructure.Dto.ClaimsDto
             {
-                return reqObj;
-            }
-            var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.ClaimsDto;
-            var result = await _claimsRepository.InsetClaim(jsonReq);
+                Amount = reqObj.ResponseData.Amount,
+                NationalIDOfPolicyHolder = reqObj.ResponseData.NationalIDOfPolicyHolder,
+                ClaimsId = reqObj.ResponseData.ClaimsId,                
+                DateOfExpense = Convert.ToDateTime(reqObj.ResponseData.DateOfExpense),
+                ExpenseId = reqObj.ResponseData.ExpenseId,
+            };
+            var result = await _claimsRepository.InsetClaim(claims);
             if(result == -1)
             {
                 return new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage };
@@ -106,13 +120,22 @@ namespace InsuranceSystem.Application.Implementation
             //    DateOfExpense = claimsDto.DateOfExpense,
             //    ExpenseId = claimsDto.ExpenseId,
             //};
-            var reqObj = RequestHandler.SplitRequest(claimsDto);
-            if (reqObj.ResponseCode != "00")
+            var reqObj = RequestHandler.SplitRequest<ClaimsDto>(claimsDto);
+            //if (reqObj.ResponseCode != "00")
+            //{
+            //    return reqObj;
+            //}
+
+            var claims = new InsuranceSystem.Infrastructure.Dto.ClaimsDto
             {
-                return reqObj;
-            }
-            var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.ClaimsDto;
-            var result = await _claimsRepository.UpdateClaim(jsonReq);
+                Amount = reqObj.ResponseData.Amount,
+                NationalIDOfPolicyHolder = reqObj.ResponseData.NationalIDOfPolicyHolder,
+                ClaimsId = reqObj.ResponseData.ClaimsId,
+                DateOfExpense = Convert.ToDateTime(reqObj.ResponseData.DateOfExpense),
+                ExpenseId = reqObj.ResponseData.ExpenseId,
+            };
+            //var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.ClaimsDto;
+            var result = await _claimsRepository.UpdateClaim(claims);
             if (result == -1)
             {
                 return new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage };

@@ -10,3 +10,5 @@ C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Infrastructure\obj\Debug\net
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Infrastructure\obj\Debug\net6.0\refint\InsuranceSystem.Infrastructure.dll
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Infrastructure\obj\Debug\net6.0\InsuranceSystem.Infrastructure.pdb
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Infrastructure\obj\Debug\net6.0\ref\InsuranceSystem.Infrastructure.dll
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Infrastructure\bin\Debug\net6.0\InsuranceSystem.Infrastructure.runtimeconfig.json
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Infrastructure\obj\Debug\net6.0\InsuranceSystem.Infrastructure.genruntimeconfig.cache

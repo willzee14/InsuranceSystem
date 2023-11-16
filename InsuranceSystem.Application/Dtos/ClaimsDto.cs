@@ -15,7 +15,7 @@ namespace InsuranceSystem.Application.Dtos
         public string NationalIDOfPolicyHolder { get; set; }        
         public int ExpenseId { get; set; }       
         public decimal Amount { get; set; }
-        public DateTime DateOfExpense { get; set; }
-        public ClaimStatus ClaimStatus { get; set; }
+        public string DateOfExpense { get; set; }
+        //public ClaimStatus ClaimStatus { get; set; }
     }
 }

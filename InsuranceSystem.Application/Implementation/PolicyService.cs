@@ -27,15 +27,15 @@ namespace InsuranceSystem.Application.Implementation
         }
         public async Task<ServiceResponse> GetByPolicyNumber(string policyHolderDto)
         {
-            var reqObj = RequestHandler.SplitRequest(policyHolderDto);
-            if (reqObj.ResponseCode != "00")
-            {
-                return reqObj;
-            }
-            var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.PolicyHolderDto;
+            var reqObj = RequestHandler.SplitRequest<PolicyHolderDto>(policyHolderDto);
+            //if (reqObj.ResponseCode != "00")
+            //{
+            //    return reqObj;
+            //}
+            //var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.PolicyHolderDto;
 
             Log.Information("About to retrieve all ClaimsByNationalID");
-            var result = await _policyHolderRepository.GetByPolicyNumber(jsonReq);
+            var result = await _policyHolderRepository.GetByPolicyNumber(reqObj.ResponseData);
             Log.Information($"response from getall claims: {JsonConvert.SerializeObject(result)}");
             if (result == null)
             {
@@ -54,13 +54,13 @@ namespace InsuranceSystem.Application.Implementation
 
         public async Task<ServiceResponse> InsetPolicy(string policyHolderDto)
         {
-            var reqObj = RequestHandler.SplitRequest(policyHolderDto);
-            if (reqObj.ResponseCode != "00")
-            {
-                return reqObj;
-            }
-            var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.PolicyHolderDto;
-            var result = await _policyHolderRepository.InsetPolicy(jsonReq);
+            var reqObj = RequestHandler.SplitRequest<PolicyHolderDto>(policyHolderDto);
+            //if (reqObj.ResponseCode != "00")
+            //{
+            //    return reqObj;
+            //}
+            //var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.PolicyHolderDto;
+            var result = await _policyHolderRepository.InsetPolicy(reqObj.ResponseData);
             if (result == -1)
             {
                 return new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage };
@@ -77,13 +77,13 @@ namespace InsuranceSystem.Application.Implementation
 
         public async Task<ServiceResponse> UpdatePolicy(string policyHolderDto)
         {
-            var reqObj = RequestHandler.SplitRequest(policyHolderDto);
-            if (reqObj.ResponseCode != "00")
-            {
-                return reqObj;
-            }
-            var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.PolicyHolderDto;
-            var result = await _policyHolderRepository.UpdatePolicy(jsonReq);
+            var reqObj = RequestHandler.SplitRequest<PolicyHolderDto>(policyHolderDto);
+            //if (reqObj.ResponseCode != "00")
+            //{
+            //    return reqObj;
+            //}
+            //var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.PolicyHolderDto;
+            var result = await _policyHolderRepository.UpdatePolicy(reqObj.ResponseData);
             if (result == -1)
             {
                 return new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage };
