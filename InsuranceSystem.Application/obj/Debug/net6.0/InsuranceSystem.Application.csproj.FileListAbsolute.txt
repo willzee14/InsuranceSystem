@@ -1,4 +1,5 @@
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Application.deps.json
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Application.runtimeconfig.json
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Application.dll
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Application.pdb
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Infrastructure.dll
@@ -12,6 +13,5 @@ C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.dll
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\refint\InsuranceSystem.Application.dll
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.pdb
-C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\ref\InsuranceSystem.Application.dll
-C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\bin\Debug\net6.0\InsuranceSystem.Application.runtimeconfig.json
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\InsuranceSystem.Application.genruntimeconfig.cache
+C:\PersonalProjects\InsuranceSystem\InsuranceSystem.Application\obj\Debug\net6.0\ref\InsuranceSystem.Application.dll
