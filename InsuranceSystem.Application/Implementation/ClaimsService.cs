@@ -42,12 +42,7 @@ namespace InsuranceSystem.Application.Implementation
 
         public async Task<ServiceResponse> GetClaimsByNationalID(string claimsDto)
         {
-            var reqObj = RequestHandler.SplitRequest<ClaimsDto>(claimsDto);
-            //if (reqObj.ResponseCode != "00")
-            //{
-            //    return reqObj;
-            //}
-            //var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.ClaimsDto;
+            var reqObj = RequestHandler.SplitRequest<ClaimsDto>(claimsDto);            
 
             var claims = new InsuranceSystem.Infrastructure.Dto.ClaimsDto
             {
@@ -69,22 +64,8 @@ namespace InsuranceSystem.Application.Implementation
 
         public async Task<ServiceResponse> InsetClaim(string claimsDto)
         {
-            //var claims = new InsuranceSystem.Infrastructure.Dto.ClaimsDto
-            //{
-            //    Amount = claimsDto.Amount,
-            //    NationalIDOfPolicyHolder = claimsDto.NationalIDOfPolicyHolder,
-            //    ClaimsId = claimsDto.ClaimsId,
-            //    ClaimStatus = Infrastructure.Enum.ClaimStatus.Submitted,
-            //    DateOfExpense = claimsDto.DateOfExpense,
-            //    ExpenseId = claimsDto.ExpenseId,
-            //};
-
-            var reqObj = RequestHandler.SplitRequest<ClaimsDto>(claimsDto);
-            //if (reqObj.ResponseCode != "00")
-            //{
-            //    return reqObj;
-            //}
-            //var jsonReq = reqObj.ResponseData as InsuranceSystem.Application.Dtos.ClaimsDto;
+            
+            var reqObj = RequestHandler.SplitRequest<ClaimsDto>(claimsDto);            
 
             var claims = new InsuranceSystem.Infrastructure.Dto.ClaimsDto
             {
@@ -110,22 +91,9 @@ namespace InsuranceSystem.Application.Implementation
         }
 
         public async Task<ServiceResponse> UpdateClaim(string claimsDto)
-        {
-            //var claims = new InsuranceSystem.Infrastructure.Dto.ClaimsDto
-            //{
-            //    Amount = claimsDto.Amount,
-            //    NationalIDOfPolicyHolder = claimsDto.NationalIDOfPolicyHolder,
-            //    ClaimsId = claimsDto.ClaimsId,
-            //    ClaimStatus = Infrastructure.Enum.ClaimStatus.Submitted,
-            //    DateOfExpense = claimsDto.DateOfExpense,
-            //    ExpenseId = claimsDto.ExpenseId,
-            //};
+        {            
             var reqObj = RequestHandler.SplitRequest<ClaimsDto>(claimsDto);
-            //if (reqObj.ResponseCode != "00")
-            //{
-            //    return reqObj;
-            //}
-
+           
             var claims = new InsuranceSystem.Infrastructure.Dto.ClaimsDto
             {
                 Amount = reqObj.ResponseData.Amount,
@@ -133,8 +101,7 @@ namespace InsuranceSystem.Application.Implementation
                 ClaimsId = reqObj.ResponseData.ClaimsId,
                 DateOfExpense = Convert.ToDateTime(reqObj.ResponseData.DateOfExpense),
                 ExpenseId = reqObj.ResponseData.ExpenseId,
-            };
-            //var jsonReq = reqObj.ResponseData as InsuranceSystem.Infrastructure.Dto.ClaimsDto;
+            };            
             var result = await _claimsRepository.UpdateClaim(claims);
             if (result == -1)
             {
