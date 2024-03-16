@@ -4,6 +4,7 @@ using InsuranceSystem.Application.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Serilog;
 #pragma warning disable
 
 namespace InsuranceSystem.API.Controllers
@@ -27,40 +28,72 @@ namespace InsuranceSystem.API.Controllers
         [ServiceFilter(typeof(EncryptionActionFilter))]
         public async Task<IActionResult> InsetClaim([FromBody] EncryptClass data)
         {
-            var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
-            var result = await _calimsService.InsetClaim(reslt);
-            
-                return Ok(result);            
+            try
+            {
+                var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
+                var result = await _calimsService.InsetClaim(reslt);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Log.Information($"Error at InsetClaim: {ex}");
+                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+            }
         }
 
         [HttpPut("UpdateClaim")]
         [ServiceFilter(typeof(EncryptionActionFilter))]
         public async Task<IActionResult> UpdateClaim([FromBody] EncryptClass data)
         {
-            var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
-            var result = await _calimsService.UpdateClaim(reslt);
-           
-                return Ok(result);            
+            try
+            {
+                var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
+                var result = await _calimsService.UpdateClaim(reslt);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Log.Information($"Error at UpdateClaim: {ex}");
+                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+            }
         }
 
         [HttpPost("ClaimsByNationalID")]
         [ServiceFilter(typeof(EncryptionActionFilter))]
         public async Task<IActionResult> ClaimsByNationalID([FromBody] EncryptClass data)
         {
-            var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
-            var result = await _calimsService.GetClaimsByNationalID(reslt);
-            
-                return Ok(result);            
+            try
+            {
+                var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
+                var result = await _calimsService.GetClaimsByNationalID(reslt);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Log.Information($"Error at ClaimsByNationalID: {ex}");
+                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+            }
         }
 
         [HttpGet("Claims")]
         [ServiceFilter(typeof(EncryptionActionFilter))]
         public async Task<IActionResult> Claims()
-        {           
-            var result = await _calimsService.GetAllClaims();
-           
-                return Ok(result);           
-            
+        {
+            try
+            {
+                var result = await _calimsService.GetAllClaims();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Log.Information($"Error at Claims: {ex}");
+                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+            }
+
         }
     }
 }
