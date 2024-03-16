@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\InsuranceSystem.Infrastructure.csproj": {}
+    "C:\\NIBChequeServicelogs\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\InsuranceSystem.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\InsuranceSystem.Infrastructure.csproj": {
+    "C:\\NIBChequeServicelogs\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\InsuranceSystem.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\InsuranceSystem.Infrastructure.csproj",
+        "projectUniqueName": "C:\\NIBChequeServicelogs\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\InsuranceSystem.Infrastructure.csproj",
         "projectName": "InsuranceSystem.Infrastructure",
-        "projectPath": "C:\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\InsuranceSystem.Infrastructure.csproj",
+        "projectPath": "C:\\NIBChequeServicelogs\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\InsuranceSystem.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Williamsac\\.nuget\\packages\\",
-        "outputPath": "C:\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\obj\\",
+        "outputPath": "C:\\NIBChequeServicelogs\\PersonalProjects\\InsuranceSystem\\InsuranceSystem.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

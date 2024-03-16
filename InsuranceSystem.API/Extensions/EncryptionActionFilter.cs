@@ -61,7 +61,7 @@ namespace InsuranceSystem.API.Extensions
 
                     var status = view.StatusCode;
                     var x = view.Value;
-                    //var content = JsonConvert.SerializeObject(x);
+                    
                     var reslt = JsonConvert.SerializeObject(x, new JsonSerializerSettings() { ContractResolver = new DefaultContractResolver() { NamingStrategy = new CamelCaseNamingStrategy() } });
                     var encryptdata = EncryptString(Key, reslt);
                     view.Value = encryptdata;
@@ -122,8 +122,7 @@ namespace InsuranceSystem.API.Extensions
                         var decryptRequest = DecryptString(Key, requestBody.Data);
 
                         _encryptedrequest = requestBody.Data;
-                        _request = decryptRequest;
-                        //var result = httpContext.Request.QueryString = new QueryString("?"+""+ decryptedString + "");
+                        _request = decryptRequest;                        
                         context.HttpContext.Items["data"] = decryptRequest;
                     }
                     else
@@ -142,19 +141,6 @@ namespace InsuranceSystem.API.Extensions
         }
 
 
-        //private async Task<string> ReadRequestBody(HttpRequest request)
-        //{
-        //    HttpRequestRewindExtensions.EnableBuffering(request);
-
-        //    var body = request.Body;
-        //    var buffer = new byte[Convert.ToInt32(request.ContentLength)];
-        //    await request.Body.ReadAsync(buffer, 0, buffer.Length);
-        //    string requestBody = Encoding.UTF8.GetString(buffer);
-        //    body.Seek(0, SeekOrigin.Begin);
-        //    request.Body = body;
-
-        //    return requestBody;
-        //}
 
         private async Task<string> ReadRequestBody(HttpRequest request)
         {
@@ -205,7 +191,7 @@ namespace InsuranceSystem.API.Extensions
                             {
                                 Key = _settings.ClientKey;
                                 var data1 = context.ActionArguments.LastOrDefault();
-                                //var ddd = "VONQtae21zTWRa73fskVhCJKeJzJxURPf4loUGieLG1Slyw/LPi0Cj++TTIkQGAIEGrLiK5AVGcOn+RSh91DXzu+wOnkwXDmkMCSk9J4qLA=";
+                               
                                 var splitResult = data1.Value.ToString();
                                 var split = string.Empty;
 
@@ -242,10 +228,6 @@ namespace InsuranceSystem.API.Extensions
 
             byte[] iv = new byte[16];
 
-            //if (!cipherText.Contains('='))
-            //{
-            //    return "Test is not base 64 encodded";
-            //}
             byte[] buffer;
             try
             {

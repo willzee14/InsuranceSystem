@@ -5,6 +5,7 @@ using InsuranceSystem.Application.Implementation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Serilog;
 #pragma warning disable
 
 namespace InsuranceSystem.API.Controllers
@@ -28,39 +29,71 @@ namespace InsuranceSystem.API.Controllers
         [ServiceFilter(typeof(EncryptionActionFilter))]
         public async Task<IActionResult> InsetPolicy([FromBody] EncryptClass data)
         {
-            var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
-            var result = await _policyService.InsetPolicy(reslt);
-                     
-                return Ok(result);            
+            try
+            {
+                var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
+                var result = await _policyService.InsetPolicy(reslt);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Log.Information($"Error at InsetPolicy: {ex}");
+                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+            }
         }
 
         [HttpPut("UpdatePolicy")]
         [ServiceFilter(typeof(EncryptionActionFilter))]
         public async Task<IActionResult> UpdatePolicy([FromBody] EncryptClass data)
         {
-            var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
-            var result = await _policyService.UpdatePolicy(reslt);
-            
-                return Ok(result);            
+            try
+            {
+                var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
+                var result = await _policyService.UpdatePolicy(reslt);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Log.Information($"Error at update policy: {ex}");
+                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+            }          
         }
 
         [HttpPost("GetByPolicyNumber")]
         [ServiceFilter(typeof(EncryptionActionFilter))]
         public async Task<IActionResult> GetByPolicyNumber([FromBody] EncryptClass data)
         {
-            var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
-            var result = await _policyService.GetByPolicyNumber(reslt);
-            
-                return Ok(result);            
+            try
+            {
+                var reslt = _contextAccessor.HttpContext?.Items?["data"]?.ToString();
+                var result = await _policyService.GetByPolicyNumber(reslt);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Log.Information($"Error at GetByPolicyNumber: {ex}");
+                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+            }
         }
 
         [HttpGet("GetPolicies")]
         [ServiceFilter(typeof(EncryptionActionFilter))]
         public async Task<IActionResult> GetPolicies()
         {
-            var result = await _policyService.GetPolicies();
-            
-                return Ok(result);           
+            try
+            {
+                var result = await _policyService.GetPolicies();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Log.Information($"Error at GetPolicies: {ex}");
+                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+            }
         }
     }
 }
