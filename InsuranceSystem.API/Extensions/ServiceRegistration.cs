@@ -26,18 +26,13 @@ namespace InsuranceSystem.API.Extensions
             services.AddHttpContextAccessor();
             services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
-            //services.AddTransient<IConfiguration>(sp =>
-            //{
-            //    IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
-            //    configurationBuilder.AddJsonFile("appsettings.json");
-            //    return configurationBuilder.Build();
-            //});
+            
 
             var appSettingsSection = configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
-            //var respSettings = configuration.GetSection("ServiceResponseSettings");
-            //services.Configure<ServiceResponseSettings>(respSettings);
+            var respSettings = configuration.GetSection("ServiceResponseSettings");
+            services.Configure<ServiceResponseSettings>(respSettings);
 
 
             services.AddDbContext<AppDbContext>(options =>
@@ -52,9 +47,8 @@ namespace InsuranceSystem.API.Extensions
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
-            {
-                //c.SwaggerDoc("v1", new OpenApiInfo { Title = "ENaira.API", Version = "v1" });
-                //c.OperationFilter<CustomHeaderFilters.AddRequiredHeaderParameter>();
+            {                
+                c.OperationFilter<CustomHeaderFilters.AddRequiredHeaderParameter>();
             });
 
             services.AddCors(options =>

@@ -39,7 +39,7 @@ namespace InsuranceSystem.API.Controllers
             catch (Exception ex)
             {
                 Log.Information($"Error at InsetPolicy: {ex}");
-                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+                return StatusCode(500,new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
             }
         }
 
@@ -57,7 +57,7 @@ namespace InsuranceSystem.API.Controllers
             catch (Exception ex)
             {
                 Log.Information($"Error at update policy: {ex}");
-                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+                return StatusCode(500,new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
             }          
         }
 
@@ -75,7 +75,7 @@ namespace InsuranceSystem.API.Controllers
             catch (Exception ex)
             {
                 Log.Information($"Error at GetByPolicyNumber: {ex}");
-                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+                return StatusCode(500,new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
             }
         }
 
@@ -92,7 +92,7 @@ namespace InsuranceSystem.API.Controllers
             catch (Exception ex)
             {
                 Log.Information($"Error at GetPolicies: {ex}");
-                return BadRequest(new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
+                return StatusCode(500,new ServiceResponse() { ResponseCode = _serviceResponseSettings.ErrorOccuredCode, ResponseMessage = _serviceResponseSettings.ErrorOccuredMessage });
             }
         }
     }
