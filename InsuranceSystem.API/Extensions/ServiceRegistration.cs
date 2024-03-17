@@ -15,7 +15,7 @@ namespace InsuranceSystem.API.Extensions
 {
     public static class ServiceRegistration
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             // service registrations
             services.AddScoped<ICalimsService, ClaimsService>();
@@ -26,11 +26,18 @@ namespace InsuranceSystem.API.Extensions
             services.AddHttpContextAccessor();
             services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
+            //services.AddTransient<IConfiguration>(sp =>
+            //{
+            //    IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+            //    configurationBuilder.AddJsonFile("appsettings.json");
+            //    return configurationBuilder.Build();
+            //});
+
             var appSettingsSection = configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
-            var respSettings = configuration.GetSection("ServiceResponseSettings");
-            services.Configure<ServiceResponseSettings>(respSettings);
+            //var respSettings = configuration.GetSection("ServiceResponseSettings");
+            //services.Configure<ServiceResponseSettings>(respSettings);
 
 
             services.AddDbContext<AppDbContext>(options =>
@@ -47,7 +54,7 @@ namespace InsuranceSystem.API.Extensions
             services.AddSwaggerGen(c =>
             {
                 //c.SwaggerDoc("v1", new OpenApiInfo { Title = "ENaira.API", Version = "v1" });
-                c.OperationFilter<CustomHeaderFilters.AddRequiredHeaderParameter>();
+                //c.OperationFilter<CustomHeaderFilters.AddRequiredHeaderParameter>();
             });
 
             services.AddCors(options =>

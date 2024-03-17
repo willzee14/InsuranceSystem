@@ -87,7 +87,6 @@ C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\Insuran
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\InsuranceSystem.API.AssemblyInfoInputs.cache
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\InsuranceSystem.API.AssemblyInfo.cs
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\InsuranceSystem.API.csproj.CoreCompileInputs.cache
-C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\InsuranceSystem.API.MvcApplicationPartsAssemblyInfo.cs
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\InsuranceSystem.API.MvcApplicationPartsAssemblyInfo.cache
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\staticwebassets\msbuild.InsuranceSystem.API.Microsoft.AspNetCore.StaticWebAssets.props
 C:\PersonalProjects\InsuranceSystem\InsuranceSystem.API\obj\Debug\net6.0\staticwebassets\msbuild.build.InsuranceSystem.API.props

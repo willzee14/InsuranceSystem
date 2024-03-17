@@ -18,5 +18,6 @@ namespace InsuranceSystem.Application.Dtos
         public string Password { get; set; }
         public string Secret { get; set; }
         public string LogPath { get; set; }
+        public string DbConnection { get; set; }
     }
 }

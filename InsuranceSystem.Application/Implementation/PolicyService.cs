@@ -54,7 +54,7 @@ namespace InsuranceSystem.Application.Implementation
             }
             else
             {
-                return new ServiceResponse() { ResponseCode = _serviceResponseSettings.SuccessCode, ResponseMessage = _serviceResponseSettings.SuccessMessage };
+                return new ServiceResponse() { ResponseCode = _serviceResponseSettings.SuccessCode, ResponseData = result, ResponseMessage = _serviceResponseSettings.SuccessMessage };
             }
         }
 

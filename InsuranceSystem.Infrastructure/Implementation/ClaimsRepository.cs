@@ -5,6 +5,7 @@ using InsuranceSystem.Infrastructure.Dtos;
 using InsuranceSystem.Infrastructure.Enum;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -12,16 +13,18 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 #pragma warning disable
 namespace InsuranceSystem.Infrastructure.Implementation
 {
     public class ClaimsRepository : IClaimsRepository
     {
         private readonly string conncetionString;
-        private readonly IConfiguration _con;
+        private readonly IConfiguration _con;       
         public ClaimsRepository(IConfiguration con)
         {
-            _con = con;
+            _con = con;           
+            
             conncetionString = _con["ConnectionStrings:dbConnection"].ToString();
         }
 
