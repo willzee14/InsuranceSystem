@@ -29,14 +29,14 @@ namespace InsuranceSystem.Test
             // Setup default response settings
             var defaultServiceResponseSettings = new ServiceResponseSettings
             {
-                SuccessCode = "00",
-                SuccessMessage = "Success",
-                NotFoundCode = "404",
-                NotFoundMessage = "Not Found",
-                ErrorOccuredCode = "500",
-                ErrorOccuredMessage = "Error Occurred",
-                FailureCode = "400",
-                FailureMessage = "Failure"
+                 SuccessCode = "00",
+                 SuccessMessage = "Operation was successful!",
+                 NotFoundCode = "02",
+                 NotFoundMessage = "Record not found!",
+                 FailureCode= "01",
+                 FailureMessage = "Operation was unsuccessful",
+                 ErrorOccuredCode = "-1",
+                 ErrorOccuredMessage = "service is temporarily unavailable"
             };
             _serviceResponseSettingsMock.Setup(x => x.Value).Returns(defaultServiceResponseSettings);
             _claimsService = new ClaimsService(_claimsRepositoryMock.Object, _serviceResponseSettingsMock.Object);
